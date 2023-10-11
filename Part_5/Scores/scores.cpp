@@ -73,10 +73,10 @@ int Scores::min() {
 }
 
 float Scores::avg() {
-    int total;
+    int total = 0;
 
     for (int i = 0; i < this->amount; i++) {
-        total = *(this->scores+i);
+        total += *(this->scores+i);
     }
 
     return (total/this->amount);
