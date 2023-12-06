@@ -13,6 +13,7 @@ class Birthdays {
         void showMenu();
         void searchPerson();
         void deletePerson();
+        void doAction(int userAction);
     
     private:
         void setSearchType(int mode);
@@ -131,6 +132,14 @@ void Birthdays::showMenu() {
     cout << menuText << endl;
 }
 
+void Birthdays::doAction(int userAction) {
+    if (userAction == 1) {
+        this->searchPerson();
+    } else if (userAction == 2) {
+        this->deletePerson();
+    } 
+}
+
 int getChoice() {
     string userInput;
     int validChoices[3] = {1,2,3};
@@ -142,9 +151,24 @@ int getChoice() {
 
 }
 
+bool playing = true;
+
 int main() {
+    system("");
     Birthdays birth;
     birth.showMenu();
+    int userChoice;
+
+    while (playing) {
+        userChoice = getChoice();
+        cout << endl;
+
+        birth.doAction(userChoice);
+
+        if (userChoice == 3) {
+            return -1;
+        }
+    }
 
     cout << endl;
     system("pause");
